@@ -1,0 +1,58 @@
+// 238. Product of Array Except Self
+// Medium
+// 17.1K
+// 946
+// Companies
+// Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+// The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+// You must write an algorithm that runs in O(n) time and without using the division operation.
+
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+                //BRUTE FORCE
+//         long long int pro = 1;
+//         int n = nums.size();
+//         int zero = 0;
+//         for(int i = 0; i<n; i++){
+//             if(nums[i] == 0) zero++;
+//             else pro = pro*nums[i];
+//         }
+        
+//         vector<int> answer(n, 0);
+//         if(zero > 1) return answer;
+        
+//         for(int i = 0; i<n; i++){
+//             if(nums[i] == 0) answer[i] = pro;
+//             else if(zero) answer[i] = 0;
+//             else answer[i] = pro/nums[i];
+//         }
+        
+//         return answer;
+
+        // OPTIMIZED 0(N)TC 0(N)SC
+        int n = nums.size();
+        vector<int> left(n, 0);
+        vector<int> right(n, 0);
+        left[0] = 1;
+        right[n-1] = 1;
+        
+        for(int i = 1; i<n; i++){
+            left[i] = left[i-1]* nums[i-1];
+        }
+        
+        for(int i = n-2; i>-1; i--){
+            right[i] = right[i+1]* nums[i+1];
+        }
+        
+        vector<int> ans(n, 0);
+        for(int i = 0; i<n; i++){
+            ans[i] = left[i] * right[i];
+        }
+        return ans;
+        
+
+    }
+};
