@@ -1,0 +1,50 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        //BRUTE FORCE
+        int rows = matrix.size();
+        int col = matrix[0].size();
+        int n = rows * col;
+        vector<int> ans(n, 0);
+        int x = 0;
+        int i = 0;
+        int j = 0;
+        int op = 1;
+        while(x<n){
+            if(matrix[i][j] != 200) {
+                ans[x] = (matrix[i][j]);
+                x++;
+            }
+            //if(x == n) return ans;
+            matrix[i][j] = 200;
+            
+            if(op == 1){
+                if((j+1) == col ) op = 2;
+                else if(matrix[i][j+1] == 200) op = 2;
+                else j++;
+            }
+            
+            else if(op == 2){
+                if((i+1) == rows ) op = 3;
+                else if(matrix[i+1][j] == 200) op = 3;
+                else i++;
+            }
+            
+            else if(op == 3){
+                if((j-1) == -1 ) op = 4;
+                else if(matrix[i][j-1] == 200) op = 4;
+                else j--;
+            }
+            
+            else{
+                if((i-1) == -1 ) op = 1;
+                else if(matrix[i-1][j] == 200) op = 1;
+                else i--;
+            }
+            
+        }
+        return ans;
+        
+        //OPTIMAL SOLUTION WILL BE RECURSIVE
+    }
+};
