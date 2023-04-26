@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        //NAIVE APPROACH   TC- 0(n)  SC- O(1)
+        int n = prices.size();
+        int low = 0;
+        int i = 0;
+        int ans = 0;
+        while(i < n){
+            if(prices[i] > prices[low]){
+                ans += prices[i] - prices[low];
+                low = i;
+            }
+            if(prices[i] < prices[low]) low = i;
+            i++;
+        }
+        return ans;
+    }
+};
+
