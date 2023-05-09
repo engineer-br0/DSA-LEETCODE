@@ -1,8 +1,8 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        map<char, int> mpt;
-        map<char, int> mps;
+        unordered_map<char, int> mpt;
+        unordered_map<char, int> mps;
         int count = t.size();  // 
         int n = s.size(); 
         for(int i =0; i<count; i++){
