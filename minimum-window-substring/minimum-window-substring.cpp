@@ -13,7 +13,6 @@ public:
         int mini = INT_MAX;
         int head = 0;
         while(r<n){
-                if(mpt[s[r]] > 0){
                     mps[s[r]]++;
                     if(mps[s[r]] <= mpt[s[r]])count--;
                     while(count == 0){
@@ -27,7 +26,6 @@ public:
                         }
                         l++;
                     }
-                }
                 r++;
         }
         return (mini == INT_MAX)? "" : s.substr(head, mini);
