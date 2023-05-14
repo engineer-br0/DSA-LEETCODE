@@ -8,17 +8,17 @@ public:
         while(final <= r - l ){
             if(left > mid) v[final++] = nums[right++];
             else if(right > r) v[final++] = nums[left++];
-            else if(nums[right] < nums[left]) v[final++] = nums[right++];
-            else v[final++] = nums[left++];
+            else v[final++] = (nums[left] < nums[right])? nums[left++] : nums[right++];
         }
         for(int i : v) nums[l++] = i;
     }
     void mergesort(vector<int>& nums, int l, int r){
-        if(l >= r) return;
+        if(l < r){
         int mid = (l+r)/2;
         mergesort(nums, l, mid);
         mergesort(nums, mid+1, r);
         merge(nums, l, mid, r);
+        }
     }
     vector<int> sortArray(vector<int>& nums) {
         mergesort(nums, 0, nums.size()-1);
