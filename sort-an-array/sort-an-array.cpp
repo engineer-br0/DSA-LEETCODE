@@ -1,6 +1,7 @@
 class Solution {
 public:
     void merge(vector<int>& nums, int l, int mid, int r){
+        if(nums[mid] < nums[mid+1]) return;
         int left = l;
         int right = mid+1;
         int final = 0;
