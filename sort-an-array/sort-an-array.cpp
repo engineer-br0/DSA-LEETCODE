@@ -14,7 +14,7 @@ public:
     }
     void mergesort(vector<int>& nums, int l, int r){
         if(l < r){
-        int mid = (l+r)/2;
+        int mid = l + (r-l)/2;
         mergesort(nums, l, mid);
         mergesort(nums, mid+1, r);
         merge(nums, l, mid, r);
